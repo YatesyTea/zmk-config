@@ -10,100 +10,87 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define DEFAULT 0
-#define LOWER   1
-#define RAISE   2
-
 / {
-    macros {
-        spotlight: spotlight {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_COMMAND &kp SPACE>;
-            label = "SPOTLIGHT";
-        };
-
-        superglide: superglide {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LCTRL &kp SPACE>;
-            label = "SUPERGLIDE";
-        };
-    };
-
-    combos {
-        compatible = "zmk,combos";
-
-        vim_esc {
-            bindings = <&kp ESCAPE>;
-            key-positions = <19 20>;
-        };
-    };
-
-    keymap {
-        compatible = "zmk,keymap";
-
-        default_layer {
-            bindings = <
-&kp ESC       &kp Q  &kp W  &kp E           &kp R     &kp T        &kp Y     &kp U        &kp I             &kp O    &kp P     &kp MINUS
-&lt 1 TAB     &kp A  &kp S  &kp D           &kp F     &kp G        &kp H     &kp J        &kp K             &kp L    &kp SEMI  &kp SQT
-&kp LEFT_ALT  &kp Z  &kp X  &kp C           &kp V     &kp B        &kp N     &kp M        &kp COMMA         &kp DOT  &kp FSLH  &mt LEFT_ALT ESC
-                            &kp LEFT_SHIFT  &kp LGUI  &kp SPACE    &kp BSPC  &lt 2 ENTER  &kp LEFT_CONTROL
-            >;
-        };
-
-        Nav {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &kp C_PREV     &kp C_PLAY_PAUSE  &kp C_NEXT   &kp C_VOL_DN  &kp C_VOL_UP  &kp K_MUTE
-&trans  &trans  &trans  &trans  &trans  &trans    &kp LEFT       &kp DOWN          &kp UP       &kp RIGHT     &spotlight    &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &kp C_AC_HOME  &kp PAGE_DOWN     &kp PAGE_UP  &kp END       &trans        &trans
-                        &trans  &trans  &trans    &trans         &trans            &trans
-            >;
-        };
-
-        lower_layer {
-            bindings = <
-&trans  &kp F1  &kp F2   &kp F3   &kp F4   &kp GRAVE    &kp EQUAL      &kp N7        &kp N8        &kp N9        &kp LEFT_BRACKET      &kp RIGHT_BRACKET
-&trans  &kp F5  &kp F6   &kp F7   &kp F8   &trans       &kp BACKSLASH  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&trans  &kp F9  &kp F10  &kp F11  &kp F12  &trans       &kp MINUS      &kp N1        &kp NUMBER_2  &kp N3        &kp N0                &trans
-                         &trans   &trans   &trans       &trans         &trans        &trans
-            >;
-        };
-
-        Both {
-            bindings = <
-&ext_power EP_ON  &ext_power EP_OFF  &trans        &trans        &trans        &bootloader     &trans          &trans          &kp PSCRN     &trans           &trans  &to 4
-&trans            &bt BT_SEL 0       &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &trans
-&trans            &trans             &trans        &trans        &trans        &trans          &trans          &trans          &trans        &trans           &trans  &trans
-                                                   &trans        &mkp MB2      &mkp MB1        &trans          &trans          &trans
-            >;
-        };
-
-        Windows_Gaming {
-            bindings = <
-&kp TAB         &kp Q  &kp W  &kp E  &kp R      &kp T        &kp Y     &kp U        &kp I      &kp O    &kp P     &kp BACKSLASH
-&kp LEFT_SHIFT  &kp A  &kp S  &kp D  &kp F      &kp G        &kp H     &kp J        &kp K      &kp L    &kp SEMI  &kp SQT
-&superglide     &kp Z  &kp X  &kp C  &kp V      &kp B        &kp N     &kp M        &kp COMMA  &kp DOT  &kp FSLH  &kp DEL
-                              &mo 5  &kp LCTRL  &kp SPACE    &kp BSPC  &lt 2 ENTER  &kp RALT
-            >;
-        };
-
-        Windows_Gaming_2 {
-            bindings = <
-&kp ESC  &kp N1  &trans  &kp NUMBER_2  &kp N3  &kp NUMBER_4    &trans  &trans  &trans  &trans  &trans  &to 0
-&trans   &trans  &trans  &trans        &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans
-&trans   &trans  &trans  &trans        &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans
-                         &trans        &trans  &trans          &trans  &trans  &trans
-            >;
-        };
-    };
-
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        combo {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
+	macros {
+		spotlight: spotlight {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&kp LEFT_COMMAND &kp SPACE>;
+			label = "SPOTLIGHT";
+		};
+		
+		superglide: superglide {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&kp LCTRL &kp SPACE>;
+			label = "SUPERGLIDE";
+		};
+	};
+	
+	keymap {
+		compatible = "zmk,keymap";
+		
+		default_layer {
+			bindings = <
+			&kp ESC       &kp Q  &kp W  &kp E           &kp R     &kp T        &kp Y     &kp U        &kp I             &kp O    &kp P     &kp MINUS
+			&lt 1 TAB     &kp A  &kp S  &kp D           &kp F     &kp G        &kp H     &kp J        &kp K             &kp L    &kp SEMI  &kp SQT
+			&kp LEFT_ALT  &kp Z  &kp X  &kp C           &kp V     &kp B        &kp N     &kp M        &kp COMMA         &kp DOT  &kp FSLH  &mt LEFT_ALT ESC
+			&kp LEFT_SHIFT  &kp LGUI  &kp SPACE    &kp BSPC  &lt 2 ENTER  &kp LEFT_CONTROL
+			>;
+		};
+		
+		Nav {
+			bindings = <
+			&trans  &trans  &trans  &trans  &trans  &trans    &kp C_PREV     &kp C_PLAY_PAUSE  &kp C_NEXT   &kp C_VOL_DN  &kp C_VOL_UP  &kp K_MUTE
+			&trans  &trans  &trans  &trans  &trans  &trans    &kp LEFT       &kp DOWN          &kp UP       &kp RIGHT     &spotlight    &trans
+			&trans  &trans  &trans  &trans  &trans  &trans    &kp C_AC_HOME  &kp PAGE_DOWN     &kp PAGE_UP  &kp END       &trans        &trans
+			&trans  &trans  &trans    &trans         &trans            &trans
+			>;
+		};
+		
+		lower_layer {
+			bindings = <
+			&trans  &kp F1  &kp F2   &kp F3   &kp F4   &kp GRAVE    &kp EQUAL      &kp N7        &kp N8        &kp N9        &kp LEFT_BRACKET      &kp RIGHT_BRACKET
+			&trans  &kp F5  &kp F6   &kp F7   &kp F8   &trans       &kp BACKSLASH  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+			&trans  &kp F9  &kp F10  &kp F11  &kp F12  &trans       &kp MINUS      &kp N1        &kp NUMBER_2  &kp N3        &kp N0                &trans
+			&trans   &trans   &trans       &trans         &trans        &trans
+			>;
+		};
+		
+		Both {
+			bindings = <
+			&ext_power EP_ON  &ext_power EP_OFF  &trans        &trans        &trans        &bootloader     &trans          &trans          &kp PSCRN     &trans           &trans  &to 4
+			&trans            &bt BT_SEL 0       &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &trans
+			&trans            &trans             &trans        &trans        &trans        &trans          &trans          &trans          &trans        &trans           &trans  &trans
+			&trans        &mkp MB2      &mkp MB1        &trans          &trans          &trans
+			>;
+		};
+		
+		Windows_Gaming {
+			bindings = <
+			&kp TAB         &kp Q  &kp W  &kp E  &kp R      &kp T        &kp Y     &kp U        &kp I      &kp O    &kp P     &kp BACKSLASH
+			&kp LEFT_SHIFT  &kp A  &kp S  &kp D  &kp F      &kp G        &kp H     &kp J        &kp K      &kp L    &kp SEMI  &kp SQT
+			&superglide     &kp Z  &kp X  &kp C  &kp V      &kp B        &kp N     &kp M        &kp COMMA  &kp DOT  &kp FSLH  &kp DEL
+			&mo 5  &kp LCTRL  &kp SPACE    &kp BSPC  &lt 2 ENTER  &kp RALT
+			>;
+		};
+		
+		Windows_Gaming_2 {
+			bindings = <
+			&kp ESC  &kp N1  &trans  &kp NUMBER_2  &kp N3  &kp NUMBER_4    &trans  &trans  &trans  &trans  &trans  &to 0
+			&trans   &trans  &trans  &trans        &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans
+			&trans   &trans  &trans  &trans        &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans
+			&trans        &trans  &trans          &trans  &trans  &trans
+			>;
+		};
+	};
+	
+	conditional_layers {
+		compatible = "zmk,conditional-layers";
+		
+		combo {
+			if-layers = <1 2>;
+			then-layer = <3>;
+		};
+	};
 };
