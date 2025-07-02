@@ -15,7 +15,7 @@
         spotlight: spotlight {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(SPACE) &kp SPACE>;
+            bindings = <&kp LG(SPACE)>;
             label = "SPOTLIGHT";
         };
 
